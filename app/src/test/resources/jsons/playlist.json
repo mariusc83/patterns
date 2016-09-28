@@ -1,0 +1,49 @@
+{
+  data: [
+    {
+      id: 3135553,
+      readable: true,
+      title: "One More Time",
+      title_short: "One More Time",
+      title_version: "",
+      isrc: "GBDUW0000053",
+      link: "https://www.deezer.com/track/3135553",
+      duration: 320,
+      track_position: 1,
+      disk_number: 1,
+      rank: 822784,
+      explicit_lyrics: false,
+      preview: "http://cdn-preview-4.deezer.com/stream/43808a3ac856cc117362ab94718603ba-6.mp3",
+      artist: {
+        id: 27,
+        name: "Daft Punk",
+        tracklist: "https://api.deezer.com/artist/27/top?limit=50",
+        type: "artist"
+      },
+      type: "track"
+    },
+    {
+      id: 3135554,
+      readable: true,
+      title: "Aerodynamic",
+      title_short: "Aerodynamic",
+      title_version: "",
+      isrc: "GBDUW0000057",
+      link: "https://www.deezer.com/track/3135554",
+      duration: 212,
+      track_position: 2,
+      disk_number: 1,
+      rank: 723823,
+      explicit_lyrics: false,
+      preview: "http://cdn-preview-f.deezer.com/stream/f3e8e90f2b7e02cdb399a4a08bd9dfcf-4.mp3",
+      artist: {
+        id: 27,
+        name: "Daft Punk",
+        tracklist: "https://api.deezer.com/artist/27/top?limit=50",
+        type: "artist"
+      },
+      type: "track"
+    }
+  ],
+  total: 2
+}
