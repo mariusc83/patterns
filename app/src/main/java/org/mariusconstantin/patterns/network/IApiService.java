@@ -11,6 +11,6 @@ import rx.Observable;
 public interface IApiService {
     String BASE_API_URL="https://api.deezer.com";
 
-    @GET("/album/{playlistId}/tracks")
+    @GET("/playlist/{playlistId}/tracks")
     Observable<JSPlaylist> getTracks(@Path("playlistId") long playlistId);
 }

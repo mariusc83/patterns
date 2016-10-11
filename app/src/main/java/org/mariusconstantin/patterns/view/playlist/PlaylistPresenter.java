@@ -48,7 +48,7 @@ public class PlaylistPresenter implements IPlaylistContract.IPlaylistPresenter {
         }
 
         return mViewModelBehaviorSubject
-                .subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(consumer);
     }
 

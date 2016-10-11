@@ -50,4 +50,9 @@ public class NetworkPlaylistRepository implements IPlaylistRepository {
     public void cache(Observable<Playlist> playlistObservable) {
         throw new UnsupportedOperationException("Use the LocalPlaylistRepository");
     }
+
+    @Override
+    public void clearCache() {
+        throw new UnsupportedOperationException("Use the LocalPlaylistRepository");
+    }
 }

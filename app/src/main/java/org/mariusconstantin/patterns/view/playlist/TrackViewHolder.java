@@ -2,7 +2,9 @@ package org.mariusconstantin.patterns.view.playlist;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
+
+import org.mariusconstantin.patterns.databinding.TrackRowLayoutBinding;
+import org.mariusconstantin.patterns.repo.model.Track;
 
 /**
  * Created by MConstantin on 9/28/2016.
@@ -10,13 +12,17 @@ import android.view.View;
 
 public class TrackViewHolder extends RecyclerView.ViewHolder {
 
-    public TrackViewHolder(View itemView) {
-        super(itemView);
+    @NonNull
+    private final TrackRowLayoutBinding mBinding;
+
+    public TrackViewHolder(@NonNull TrackRowLayoutBinding mBinding) {
+        super(mBinding.getRoot());
+        this.mBinding = mBinding;
     }
 
-    @NonNull
-    public static TrackViewHolder create(int layoutId){
-        return null;
+
+    public void bind(@NonNull Track track) {
+        mBinding.setTrack(track);
     }
 
 }

@@ -15,6 +15,7 @@ import rx.Observable;
 
 public class PlaylistRepository implements IPlaylistRepository {
 
+    // TODO: 10/11/2016 Add an Observer pattern here to be notified when to clear the cache
     @NetworkPlaylistRepo
     private final IPlaylistRepository mNetworkRepository;
     @LocalPlaylistRepo
@@ -41,5 +42,10 @@ public class PlaylistRepository implements IPlaylistRepository {
     @Override
     public void cache(Observable<Playlist> playlistObservable) {
         mLocalRepository.cache(playlistObservable);
+    }
+
+    @Override
+    public void clearCache() {
+        mLocalRepository.clearCache();
     }
 }

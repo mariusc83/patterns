@@ -29,7 +29,7 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         mActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         if (getSupportFragmentManager().findFragmentById(R.id.activity_main) == null) {
-            switchToFragment(new PlaylistFragment());
+            switchToFragment(PlaylistFragment.create(1180358611));
         }
     }
 

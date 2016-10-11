@@ -9,7 +9,7 @@ import rx.Observable;
  */
 
 public class LocalPlaylistRepository implements IPlaylistRepository {
-    // TODO: 10/3/2016 Persist it based on the playlist id 
+    // TODO: 10/3/2016 Persist it based on playlist id,
     private Observable<Playlist> mCachedObservable;
 
     @Override
@@ -19,6 +19,11 @@ public class LocalPlaylistRepository implements IPlaylistRepository {
 
     @Override
     public void cache(Observable<Playlist> playlistObservable) {
-        mCachedObservable=playlistObservable;
+        mCachedObservable = playlistObservable;
+    }
+
+    @Override
+    public void clearCache() {
+        mCachedObservable = null;
     }
 }

@@ -12,6 +12,7 @@ public interface IPlaylistRepository {
 
     Observable<Playlist> getPlaylist(long id);
 
-
     void cache(Observable<Playlist> playlistObservable);
+
+    void clearCache();
 }
