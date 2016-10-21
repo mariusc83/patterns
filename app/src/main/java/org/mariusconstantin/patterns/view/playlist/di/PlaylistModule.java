@@ -3,7 +3,7 @@ package org.mariusconstantin.patterns.view.playlist.di;
 import android.view.LayoutInflater;
 
 import org.mariusconstantin.patterns.log.ILogger;
-import org.mariusconstantin.patterns.repo.IPlaylistRepository;
+import org.mariusconstantin.patterns.repo.di.RepositoriesSubcomponent;
 import org.mariusconstantin.patterns.view.di.FragmentScope;
 import org.mariusconstantin.patterns.view.playlist.IPlaylistContract;
 import org.mariusconstantin.patterns.view.playlist.PlaylistAdapter;
@@ -21,8 +21,9 @@ public class PlaylistModule {
 
     @FragmentScope
     @Provides
-    public IPlaylistContract.IPlaylistPresenter providePlaylistPresenter(IPlaylistRepository playlistRepository, ILogger logger) {
-        return new PlaylistPresenter(playlistRepository, logger);
+    public IPlaylistContract.IPlaylistPresenter providePlaylistPresenter(RepositoriesSubcomponent
+                                                                                 .Builder builder, ILogger logger) {
+        return new PlaylistPresenter(builder.build().getPlaylistRepository(), logger);
     }
 
 

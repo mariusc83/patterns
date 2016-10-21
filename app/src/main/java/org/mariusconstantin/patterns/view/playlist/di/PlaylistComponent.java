@@ -1,7 +1,5 @@
 package org.mariusconstantin.patterns.view.playlist.di;
 
-import org.mariusconstantin.patterns.log.ILogger;
-import org.mariusconstantin.patterns.repo.di.RepositoriesComponent;
 import org.mariusconstantin.patterns.view.di.FragmentScope;
 import org.mariusconstantin.patterns.view.playlist.IPlaylistContract;
 import org.mariusconstantin.patterns.view.playlist.PlaylistFragment;

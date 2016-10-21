@@ -39,7 +39,6 @@ public class Operators {
 
     // The Map Operator
     // http://reactivex.io/documentation/operators/map.html
-/*
     @Test
     public void testMap() {
         @SuppressWarnings("unchecked")
@@ -59,11 +58,9 @@ public class Operators {
         verify(observer, times(1)).onNext("BottomCorner");
         verify(observer, times(1)).onCompleted();
     }
-*/
 
     // the Flat Map Operator
     // http://reactivex.io/documentation/operators/flatmap.html
-/*
     @Test
     public void testFlatMapMaxConcurrent() {
         Observable<Integer> source = Observable
@@ -87,11 +84,10 @@ public class Operators {
         Assert.assertEquals(expected.size(), ts.getOnNextEvents().size());
         Assert.assertTrue(expected.containsAll(ts.getOnNextEvents()));
     }
-*/
 
     // the Combine Latest Operator
     // http://reactivex.io/documentation/operators/combinelatest.html
-/*
+
     @Test
     public void testCombineLatestDifferentLengthObservableSequences() {
         @SuppressWarnings("unchecked")
@@ -105,8 +101,7 @@ public class Operators {
         Observable<String> combineLatestW = Observable.combineLatest(w1, w2, w3, getConcat3StringsCombineLatestFunction());
         combineLatestW.subscribe(w);
 
-        */
-/* simulate sending data *//*
+        /* simulate sending data */
 
         // once for w1
         w1.onNext("1a"); // waits for w2
@@ -125,8 +120,7 @@ public class Operators {
         w3.onNext("3d"); // returns 1a2b3d
         w3.onCompleted();
 
-        */
-/* we should have been called 4 times on the Observer *//*
+        /* we should have been called 5 times on the Observer */
 
         InOrder inOrder = inOrder(w);
         inOrder.verify(w).onNext("1a2a3a");
@@ -160,7 +154,6 @@ public class Operators {
             }
         });
     }
-*/
 
 
 }

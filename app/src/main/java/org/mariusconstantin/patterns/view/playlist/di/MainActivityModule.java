@@ -3,6 +3,7 @@ package org.mariusconstantin.patterns.view.playlist.di;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 
+import org.mariusconstantin.patterns.repo.di.RepositoriesSubcomponent;
 import org.mariusconstantin.patterns.view.di.ActivityScope;
 import org.mariusconstantin.patterns.view.playlist.MainActivity;
 
@@ -12,7 +13,7 @@ import dagger.Provides;
 /**
  * Created by MConstantin on 9/28/2016.
  */
-@Module
+@Module(subcomponents = RepositoriesSubcomponent.class)
 public class MainActivityModule {
 
     @NonNull

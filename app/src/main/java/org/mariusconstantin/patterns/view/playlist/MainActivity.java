@@ -8,9 +8,6 @@ import android.os.Bundle;
 
 import org.mariusconstantin.patterns.R;
 import org.mariusconstantin.patterns.databinding.ActivityMainBinding;
-import org.mariusconstantin.patterns.repo.di.DaggerRepositoriesComponent;
-import org.mariusconstantin.patterns.repo.di.RepositoriesComponent;
-import org.mariusconstantin.patterns.repo.di.RepositoriesModule;
 import org.mariusconstantin.patterns.view.BaseActivity;
 import org.mariusconstantin.patterns.view.playlist.di.DaggerMainActivityComponent;
 import org.mariusconstantin.patterns.view.playlist.di.MainActivityComponent;
@@ -43,15 +40,10 @@ public class MainActivity extends BaseActivity {
     public MainActivityComponent getMainActivityComponent() {
         MainActivityComponent activityComponent = mMainActivityComponentReference.get();
         if (activityComponent == null) {
-            final RepositoriesComponent repositoriesComponent = DaggerRepositoriesComponent
-                    .builder()
-                    .applicationComponent(getApplicationComponent())
-                    .repositoriesModule(new RepositoriesModule())
-                    .build();
             activityComponent = DaggerMainActivityComponent
                     .builder()
-                    .mainActivityModule(new MainActivityModule(this))
-                    .repositoriesComponent(repositoriesComponent).build();
+                    .applicationComponent(getApplicationComponent())
+                    .mainActivityModule(new MainActivityModule(this)).build();
             mMainActivityComponentReference.compareAndSet(null, activityComponent);
         }
 
