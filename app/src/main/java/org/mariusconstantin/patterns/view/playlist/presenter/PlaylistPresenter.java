@@ -1,4 +1,4 @@
-package org.mariusconstantin.patterns.view.playlist;
+package org.mariusconstantin.patterns.view.playlist.presenter;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -6,13 +6,13 @@ import android.support.annotation.NonNull;
 import org.mariusconstantin.patterns.log.ILogger;
 import org.mariusconstantin.patterns.repo.IPlaylistRepository;
 import org.mariusconstantin.patterns.repo.model.Playlist;
+import org.mariusconstantin.patterns.view.playlist.IPlaylistContract;
 import org.mariusconstantin.patterns.view.playlist.model.PlaylistViewModel;
 
 import rx.Observable;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
-import rx.schedulers.Schedulers;
 import rx.subjects.BehaviorSubject;
 
 /**

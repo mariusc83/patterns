@@ -6,6 +6,9 @@ import org.mariusconstantin.patterns.di.ApplicationComponent;
 import org.mariusconstantin.patterns.log.ILogger;
 import org.mariusconstantin.patterns.repo.di.RepositoriesSubcomponent;
 import org.mariusconstantin.patterns.view.di.ActivityScope;
+import org.mariusconstantin.patterns.view.playlist.MainActivity;
+import org.mariusconstantin.patterns.view.playlist.flowcontroller.FlowController;
+import org.mariusconstantin.patterns.view.playlist.fragment.PlaylistFragment;
 
 import dagger.Component;
 
@@ -22,4 +25,10 @@ public interface MainActivityComponent {
     ILogger getLogger();
 
     RepositoriesSubcomponent.Builder getRepositoriesBuilder();
+
+    FlowController getFlowController();
+
+    void inject(MainActivity activity);
+
+
 }

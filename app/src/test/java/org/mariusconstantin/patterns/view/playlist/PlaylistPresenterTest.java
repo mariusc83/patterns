@@ -10,6 +10,7 @@ import org.mariusconstantin.patterns.repo.IPlaylistRepository;
 import org.mariusconstantin.patterns.repo.model.Playlist;
 import org.mariusconstantin.patterns.repo.model.Track;
 import org.mariusconstantin.patterns.view.playlist.model.PlaylistViewModel;
+import org.mariusconstantin.patterns.view.playlist.presenter.PlaylistPresenter;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;

@@ -18,10 +18,10 @@ public abstract class Track implements Parcelable {
 
     public abstract String link();
 
+    public abstract String albumCoverUrl();
 
-    public static Track create(long id, @NonNull String title, @NonNull String link) {
-        return builder().id(id).title(title).link(link).build();
-    }
+    public abstract String artistName();
+
 
     public static Builder builder() {
         return new AutoValue_Track.Builder();
@@ -34,6 +34,10 @@ public abstract class Track implements Parcelable {
         Builder link(String link);
 
         Builder title(String title);
+
+        Builder albumCoverUrl(String albumCoverUrl);
+
+        Builder artistName(String artistName);
 
         Track build();
     }

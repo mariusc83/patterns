@@ -8,4 +8,6 @@ public class JSTrack {
     public long id;
     public String title;
     public String link;
+    public JSAlbum album;
+    public JSArtist artist;
 }

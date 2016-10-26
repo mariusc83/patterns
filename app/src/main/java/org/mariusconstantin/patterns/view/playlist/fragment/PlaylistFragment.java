@@ -1,7 +1,8 @@
-package org.mariusconstantin.patterns.view.playlist;
+package org.mariusconstantin.patterns.view.playlist.fragment;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,10 +12,15 @@ import android.view.ViewGroup;
 
 import org.mariusconstantin.patterns.R;
 import org.mariusconstantin.patterns.databinding.PlaylistLayoutBinding;
+import org.mariusconstantin.patterns.repo.model.Track;
+import org.mariusconstantin.patterns.view.playlist.IPlaylistContract;
+import org.mariusconstantin.patterns.view.playlist.MainActivity;
+import org.mariusconstantin.patterns.view.playlist.adapter.PlaylistAdapter;
 import org.mariusconstantin.patterns.view.playlist.di.DaggerPlaylistComponent;
 import org.mariusconstantin.patterns.view.playlist.di.MainActivityComponent;
 import org.mariusconstantin.patterns.view.playlist.di.PlaylistComponent;
 import org.mariusconstantin.patterns.view.playlist.di.PlaylistModule;
+import org.mariusconstantin.patterns.view.playlist.flowcontroller.FlowController;
 import org.mariusconstantin.patterns.view.playlist.model.PlaylistViewModel;
 
 import javax.inject.Inject;
@@ -31,6 +37,7 @@ public class PlaylistFragment extends Fragment implements IPlaylistContract.IPla
 
     private static final String PLAYLIST_ID_KEY = "playlist_id";
 
+
     private PlaylistComponent mPlaylistComponent;
 
     @Inject
@@ -39,11 +46,14 @@ public class PlaylistFragment extends Fragment implements IPlaylistContract.IPla
     @Inject
     PlaylistAdapter mPlaylistAdapter;
 
+    @Inject
+    FlowController mFlowController;
+
     private PlaylistLayoutBinding mBinding;
 
     private Subscription mViewModelSubscription;
 
-    public static final PlaylistFragment create(long playlistId) {
+    public static PlaylistFragment create(long playlistId) {
         final Bundle bundle = new Bundle();
         bundle.putLong(PLAYLIST_ID_KEY, playlistId);
         final PlaylistFragment fragment = new PlaylistFragment();
@@ -81,7 +91,7 @@ public class PlaylistFragment extends Fragment implements IPlaylistContract.IPla
         mBinding.recyclerView.setHasFixedSize(true);
         mBinding.recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         mBinding.recyclerView.setAdapter(mPlaylistAdapter);
-
+        mPlaylistAdapter.setTrackDetailsListener(mTrackDetailsListener);
     }
 
     @Override
@@ -100,6 +110,13 @@ public class PlaylistFragment extends Fragment implements IPlaylistContract.IPla
         @Override
         public void call(PlaylistViewModel model) {
             mPlaylistAdapter.setData(model.tracks());
+        }
+    };
+
+    private final PlaylistAdapter.OnNavigateToTrackDetailsListener mTrackDetailsListener = new PlaylistAdapter.OnNavigateToTrackDetailsListener() {
+        @Override
+        public void goToTrackDetails(@NonNull Track track) {
+            mFlowController.goToTrackDetails(track, getActivity());
         }
     };
 }

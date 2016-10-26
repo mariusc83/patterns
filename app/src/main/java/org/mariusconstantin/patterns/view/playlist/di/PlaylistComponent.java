@@ -2,7 +2,8 @@ package org.mariusconstantin.patterns.view.playlist.di;
 
 import org.mariusconstantin.patterns.view.di.FragmentScope;
 import org.mariusconstantin.patterns.view.playlist.IPlaylistContract;
-import org.mariusconstantin.patterns.view.playlist.PlaylistFragment;
+import org.mariusconstantin.patterns.view.playlist.fragment.PlaylistFragment;
+import org.mariusconstantin.patterns.view.playlist.fragment.TrackDetailFragment;
 
 import dagger.Component;
 
@@ -14,7 +15,7 @@ import dagger.Component;
 @FragmentScope
 public interface PlaylistComponent {
 
-    IPlaylistContract.IPlaylistPresenter getPlaylistPresenter();
+    void inject (TrackDetailFragment trackDetailFragment);
 
     void inject(PlaylistFragment playlistFragment);
 }

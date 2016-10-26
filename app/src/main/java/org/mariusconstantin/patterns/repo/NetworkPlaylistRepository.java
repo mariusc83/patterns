@@ -39,6 +39,8 @@ public class NetworkPlaylistRepository implements IPlaylistRepository {
                                 .id(reference.id)
                                 .link(reference.link)
                                 .title(reference.title)
+                                .albumCoverUrl(reference.album.cover_medium)
+                                .artistName(reference.artist.name)
                                 .build();
                     }
                 }).transform();

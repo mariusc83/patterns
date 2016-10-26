@@ -6,8 +6,8 @@ import org.mariusconstantin.patterns.log.ILogger;
 import org.mariusconstantin.patterns.repo.di.RepositoriesSubcomponent;
 import org.mariusconstantin.patterns.view.di.FragmentScope;
 import org.mariusconstantin.patterns.view.playlist.IPlaylistContract;
-import org.mariusconstantin.patterns.view.playlist.PlaylistAdapter;
-import org.mariusconstantin.patterns.view.playlist.PlaylistPresenter;
+import org.mariusconstantin.patterns.view.playlist.adapter.PlaylistAdapter;
+import org.mariusconstantin.patterns.view.playlist.presenter.PlaylistPresenter;
 
 import dagger.Module;
 import dagger.Provides;
