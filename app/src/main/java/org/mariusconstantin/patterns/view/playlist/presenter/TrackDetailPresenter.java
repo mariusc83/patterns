@@ -55,7 +55,7 @@ public class TrackDetailPresenter implements IPlaylistContract.ITrackDetailPrese
                                     .build();
                         }
                     })
-                    .subscribeOn(Schedulers.io())
+                    .subscribeOn(Schedulers.computation())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(mModelBehaviorSubject);
         }

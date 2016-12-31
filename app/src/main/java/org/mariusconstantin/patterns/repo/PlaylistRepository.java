@@ -33,15 +33,15 @@ public class PlaylistRepository implements IPlaylistRepository {
         Observable<Playlist> cachedObservable = mLocalRepository.getPlaylist(id);
         if (cachedObservable == null) {
             cachedObservable = mNetworkRepository.getPlaylist(id).cache();
-            cache(cachedObservable);
+            cache(id, cachedObservable);
         }
         return cachedObservable;
     }
 
 
     @Override
-    public void cache(Observable<Playlist> playlistObservable) {
-        mLocalRepository.cache(playlistObservable);
+    public void cache(long playlistId, Observable<Playlist> playlistObservable) {
+        mLocalRepository.cache(playlistId, playlistObservable);
     }
 
     @Override

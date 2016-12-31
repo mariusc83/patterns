@@ -9,6 +9,7 @@ import org.mariusconstantin.patterns.log.ILogger;
 import org.mariusconstantin.patterns.repo.IPlaylistRepository;
 import org.mariusconstantin.patterns.repo.model.Playlist;
 import org.mariusconstantin.patterns.repo.model.Track;
+import org.mariusconstantin.patterns.view.playlist.interactor.IPlaylistInteractor;
 import org.mariusconstantin.patterns.view.playlist.model.PlaylistViewModel;
 import org.mariusconstantin.patterns.view.playlist.presenter.PlaylistPresenter;
 import org.mockito.ArgumentCaptor;
@@ -43,7 +44,7 @@ import static org.mockito.Mockito.verifyNoMoreInteractions;
 public class PlaylistPresenterTest {
 
     @Mock
-    IPlaylistRepository mMockPlaylistRepository;
+    IPlaylistInteractor mMockPlaylistInteractor;
 
     @Mock
     ILogger mMockLogger;
@@ -56,7 +57,7 @@ public class PlaylistPresenterTest {
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        mPlaylistPresenter = new PlaylistPresenter(mMockPlaylistRepository, mMockLogger);
+        mPlaylistPresenter = new PlaylistPresenter(mMockPlaylistInteractor, mMockLogger);
     }
 
     @Test
@@ -74,7 +75,7 @@ public class PlaylistPresenterTest {
                 subscriber.onNext(mockPlaylist);
             }
         }).subscribeOn(AndroidSchedulers.mainThread());
-        given(mMockPlaylistRepository.getPlaylist(playlistId)).willReturn(playlistObservable);
+        given(mMockPlaylistInteractor.getPlaylistObservable(playlistId)).willReturn(playlistObservable);
 
         // when
         final Subscription subscription = mPlaylistPresenter.onResume(mMockAction, playlistId);
@@ -101,7 +102,7 @@ public class PlaylistPresenterTest {
                 subscriber.onNext(mockPlaylist);
             }
         }).subscribeOn(AndroidSchedulers.mainThread());
-        given(mMockPlaylistRepository.getPlaylist(playlistId)).willReturn(playlistObservable);
+        given(mMockPlaylistInteractor.getPlaylistObservable(playlistId)).willReturn(playlistObservable);
 
         // when
         final Subscription subscription = mPlaylistPresenter.onResume(mMockAction, playlistId);
@@ -110,8 +111,8 @@ public class PlaylistPresenterTest {
 
         // then
         verify(mMockAction, times(2)).call(argumentCaptor.capture());
-        verify(mMockPlaylistRepository, times(1)).getPlaylist(eq(playlistId));
-        verifyNoMoreInteractions(mMockPlaylistRepository);
+        verify(mMockPlaylistInteractor, times(1)).getPlaylistObservable(eq(playlistId));
+        verifyNoMoreInteractions(mMockPlaylistInteractor);
         assertThat(argumentCaptor.getValue().tracks()).isEqualTo(trackList);
     }
 
@@ -133,7 +134,7 @@ public class PlaylistPresenterTest {
                 return Observable.just(mockPlaylist);
             }
         }).subscribeOn(AndroidSchedulers.mainThread());
-        given(mMockPlaylistRepository.getPlaylist(playlistId)).willReturn(playlistObservable);
+        given(mMockPlaylistInteractor.getPlaylistObservable(playlistId)).willReturn(playlistObservable);
 
         // when
         final Subscription subscription = mPlaylistPresenter.onResume(mMockAction, playlistId);

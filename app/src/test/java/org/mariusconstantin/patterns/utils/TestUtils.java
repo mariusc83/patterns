@@ -1,15 +1,8 @@
 package org.mariusconstantin.patterns.utils;
 
+import android.databinding.repacked.apache.commons.io.IOUtils;
 import android.support.annotation.NonNull;
 
-import org.apache.commons.io.IOUtils;
-import org.robolectric.Robolectric;
-import org.robolectric.RuntimeEnvironment;
-import org.robolectric.Shadows;
-import org.robolectric.shadows.ShadowApplication;
-import org.robolectric.shadows.ShadowAssetManager;
-
-import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;

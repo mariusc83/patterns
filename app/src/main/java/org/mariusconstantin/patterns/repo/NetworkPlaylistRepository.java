@@ -28,29 +28,32 @@ public class NetworkPlaylistRepository implements IPlaylistRepository {
 
     @Override
     public Observable<Playlist> getPlaylist(long id) {
-        return mApiService.getTracks(id).map(new Func1<JSPlaylist, Playlist>() {
-            @Override
-            public Playlist call(JSPlaylist jsPlaylist) {
-                return PlaylistTransformer.from(jsPlaylist).mapTrack(new Function<Track, JSTrack>() {
-                    @NonNull
+        return mApiService
+                .getTracks(id)
+                .map(new Func1<JSPlaylist, Playlist>() {
                     @Override
-                    public Track apply(JSTrack reference) {
-                        return Track.builder()
-                                .id(reference.id)
-                                .link(reference.link)
-                                .title(reference.title)
-                                .albumCoverUrl(reference.album.cover_medium)
-                                .artistName(reference.artist.name)
-                                .build();
+                    public Playlist call(JSPlaylist jsPlaylist) {
+                        return PlaylistTransformer.from(jsPlaylist).mapTrack(new Function<Track, JSTrack>() {
+                            @NonNull
+                            @Override
+                            public Track apply(JSTrack reference) {
+                                return Track.builder()
+                                        .id(reference.id)
+                                        .link(reference.link)
+                                        .title(reference.title)
+                                        .albumCoverUrl(reference.album.cover_medium)
+                                        .artistName(reference.artist.name)
+                                        .build();
+                            }
+                        }).transform();
                     }
-                }).transform();
-            }
-        });
+                });
     }
 
     @Override
-    public void cache(Observable<Playlist> playlistObservable) {
+    public void cache(long playlistId, Observable<Playlist> playlistObservable) {
         throw new UnsupportedOperationException("Use the LocalPlaylistRepository");
+
     }
 
     @Override
