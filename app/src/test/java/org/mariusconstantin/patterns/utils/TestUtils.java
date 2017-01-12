@@ -1,7 +1,8 @@
 package org.mariusconstantin.patterns.utils;
 
-import android.databinding.repacked.apache.commons.io.IOUtils;
 import android.support.annotation.NonNull;
+
+import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
 import java.io.InputStream;

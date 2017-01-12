@@ -27,4 +27,5 @@ public class PlaylistInteractor implements IPlaylistInteractor {
     public Observable<Playlist> getPlaylistObservable(long playlistId) {
         return mPlaylistRepository.getPlaylist(playlistId);
     }
+
 }
